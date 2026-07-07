@@ -1,5 +1,5 @@
-import { SiTypescript, SiJavascript, SiPython, SiReact, SiGit, SiLinux, SiNextdotjs, SiMysql, SiGooglecloud } from "react-icons/si";
-import { TbApi } from "react-icons/tb";
+import { SiTypescript, SiJavascript, SiPython, SiReact, SiGit, SiLinux, SiNextdotjs, SiMysql, SiGooglecloud, SiPandas } from "react-icons/si";
+import { TbApi, TbBrowserCheck } from "react-icons/tb";
 import '../styles/skills.css'
 import { Reveal } from "../components/Reveal";
 import type { Language } from "../types";
@@ -8,6 +8,8 @@ const skills = [
     { name: "TypeScript", icon: SiTypescript },
     { name: "JavaScript", icon: SiJavascript },
     { name: "Python", icon: SiPython },
+    { name: "Pandas", icon: SiPandas },
+    { name: "Playwright", icon: TbBrowserCheck },
     { name: "React", icon: SiReact },
     { name: "Next.js", icon: SiNextdotjs },
     { name: "MySQL", icon: SiMysql },

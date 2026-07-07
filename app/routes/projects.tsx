@@ -13,6 +13,8 @@ const secondaryProjects = [
         description: "Built with React and a REST API integration, Lumiere lets users discover movies based on genre, mood, and popularity — with a clean interface that makes browsing feel effortless.",
         descriptionPt: "Construído com React e integração REST API, o Lumiere permite descobrir filmes por gênero, clima e popularidade — com uma interface limpa que deixa a navegação leve.",
         stack: "React · REST API · JavaScript",
+        image: "/images/American-Psycho.avif",
+        logo: "/images/LogoLumiere.svg",
         liveLink: "https://gustavo-henriq.github.io/Lumiere/",
         sourceLink: "https://github.com/gustavo-henriq/Lumiere",
     },
@@ -48,29 +50,36 @@ export function Projects({ language }: { language: Language }) {
                     {secondaryProjects.map((project, index) => (
                         <Reveal
                             key={project.name}
-                            className="project secondaryProject"
+                            className="project secondaryProject lumiereProject"
                             delay={(index + 1) * 120}
                             onMouseMove={handleProjectMove}
                             onMouseLeave={resetProjectTilt}
                         >
-                            <div className="projectPreview" aria-hidden="true">
-                                <div className="projectPreviewBar">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <div className="projectPreviewBody">
-                                    <span className="projectPreviewLine"></span>
-                                    <span className="projectPreviewLine short"></span>
-                                    <span className="projectPreviewTile"></span>
-                                </div>
+                            <div className="projectPreview lumierePreview" aria-hidden="true">
+                                <img
+                                    className="lumiereBlurBackdrop"
+                                    src={project.image}
+                                    alt=""
+                                    width="1365"
+                                    height="629"
+                                />
+                                <img
+                                    className="lumiereSceneImage"
+                                    src={project.image}
+                                    alt=""
+                                    width="1365"
+                                    height="629"
+                                />
                             </div>
 
                             <div className="projectContent">
-                                <p className="projectEyebrow">
-                                    {language === "en" ? "Secondary Project" : "Projeto Secundário"} 02
-                                </p>
-                                <h3 className="projectTitle">{project.name}</h3>
+                                <img
+                                    className="lumiereTitleLogo"
+                                    src={project.logo}
+                                    alt={project.name}
+                                    width="167"
+                                    height="72"
+                                />
                                 <p className="projectProof">
                                     {language === "en" ? project.oneLiner : project.oneLinerPt}
                                 </p>

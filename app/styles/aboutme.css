@@ -8,11 +8,38 @@
 }
 
 .aboutmeImage {
-    background-color: black;
+    position: relative;
+    display: grid;
+    place-items: end center;
     width: min(28rem, 100%);
-    min-height: 24rem;
+    height: clamp(23rem, 42vw, 27rem);
     border-radius: 0.45rem;
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.14);
+    background: transparent;
+    box-shadow: none;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.aboutmeImage::before {
+    position: absolute;
+    content: "";
+    inset: 18% 3% 2%;
+    z-index: -1;
+    border-radius: 50%;
+    background:
+        radial-gradient(ellipse at center, rgba(23, 46, 175, 0.1), transparent 58%),
+        radial-gradient(ellipse at 58% 62%, rgba(253, 31, 216, 0.08), transparent 62%);
+    filter: blur(12px);
+    opacity: 0.9;
+}
+
+.aboutmeImage img {
+    display: block;
+    width: min(22.5rem, 88%);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 28px 34px rgba(24, 24, 27, 0.16));
+    transform: translateY(2.2rem);
 }
 
 .aboutmeContent {
@@ -41,5 +68,9 @@
     .aboutmeImage,
     .aboutmeContent {
         width: 100%;
+    }
+
+    .aboutmeImage {
+        height: clamp(22rem, 112vw, 30rem);
     }
 }

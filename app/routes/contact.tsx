@@ -75,7 +75,7 @@ export function Contact({ language }: { language: Language }) {
             </div>
             <footer className="siteFooter">
                 <span>Gustavo H.</span>
-                <span>{language === "en" ? "Full stack developer focused on AI and React." : "Desenvolvedor full stack focado em IA e React."}</span>
+                <span>{language === "en" ? "Developer focused on AI and React." : "Desenvolvedor focado em IA e React."}</span>
                 <span>2026</span>
             </footer>
         </Reveal>

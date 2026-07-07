@@ -1,60 +1,252 @@
-.jobHunterSection {
+.jobHunterScrollScene {
     position: relative;
-    z-index: 2;
-    display: grid;
-    place-items: center;
     width: 100%;
-    margin-inline: 0;
-    min-height: clamp(47rem, 98svh, 58rem);
-    padding-block: clamp(1rem, 2vw, 1.75rem);
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-    overflow: visible;
-    isolation: isolate;
+    min-height: clamp(48rem, 138vh, 66rem);
 }
 
-.jobHunterSpotlight {
-    position: absolute;
-    inset: -18% 0 -8%;
-    z-index: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(
-            ellipse at 50% 96%,
-            rgba(236, 72, 153, 0.11) 0%,
-            rgba(139, 92, 246, 0.07) 32%,
-            transparent 70%
-        );
-    opacity: 0;
-    will-change: transform, opacity;
-    transform: translate3d(0, 0, 0);
+.jobHunterScrollScene.isFlowReady .jobHunterProject {
+    position: sticky;
+    top: clamp(5.2rem, 10vh, 7rem);
 }
 
-.jobHunterStage {
+.jobHunterProject {
+    --jh-flow-height: none;
+    --jh-flow-margin: 1.05rem;
+    --jh-flow-opacity: 1;
+    --jh-flow-y: 0px;
+    --jh-flow-clip: 0%;
+    --jh-card-one-opacity: 1;
+    --jh-card-one-y: 0px;
+    --jh-card-one-scale: 1;
+    --jh-card-two-opacity: 1;
+    --jh-card-two-y: 0px;
+    --jh-card-two-scale: 1;
+    --jh-card-three-opacity: 1;
+    --jh-card-three-y: 0px;
+    --jh-card-three-scale: 1;
+    --jh-arrow-one-opacity: 1;
+    --jh-arrow-one-scale: 1;
+    --jh-arrow-two-opacity: 1;
+    --jh-arrow-two-scale: 1;
+    --jh-delivery-opacity: 1;
+    --jh-delivery-y: 0px;
     position: relative;
-    inset: auto;
-    z-index: 1;
+    isolation: isolate;
+    min-height: auto;
+    overflow: hidden;
+}
+
+.jobHunterProject::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(ellipse 34rem 22rem at 12% 18%, rgba(23, 46, 175, 0.1), transparent 68%),
+        radial-gradient(ellipse 38rem 24rem at 88% 84%, rgba(253, 31, 216, 0.1), transparent 68%);
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.jobHunterPreview {
+    min-height: 21rem;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent 42%),
+        radial-gradient(ellipse 18rem 12rem at 24% 18%, rgba(23, 46, 175, 0.3), transparent 72%),
+        radial-gradient(ellipse 18rem 12rem at 82% 82%, rgba(253, 31, 216, 0.18), transparent 72%),
+        #111111;
+}
+
+.jobHunterPreview::before {
+    position: absolute;
+    content: "";
+    inset: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.45rem;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 2rem 2rem;
+    mask-image: radial-gradient(ellipse at center, black 24%, transparent 78%);
+}
+
+.jobHunterPreview::after {
+    position: absolute;
+    content: "";
+    width: 13rem;
+    height: 13rem;
+    right: -3.5rem;
+    bottom: -3.5rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    filter: blur(10px);
+    transition: transform 0.35s ease;
+}
+
+.jobHunterProject:hover .jobHunterPreview::after {
+    transform: scale(1.16) translate(-0.5rem, -0.5rem);
+}
+
+.jobHunterPreviewGrid {
+    position: absolute;
+    left: 1.7rem;
+    right: 1.7rem;
+    bottom: 1.65rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.7rem;
+}
+
+.jobHunterPreviewGrid span {
+    height: 4.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.55rem;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04)),
+        rgba(255, 255, 255, 0.03);
+}
+
+.jobHunterPreviewGrid span:nth-child(1) {
+    box-shadow: inset 0 0 0 1px rgba(178, 88, 45, 0.14);
+}
+
+.jobHunterPreviewGrid span:nth-child(2) {
+    box-shadow: inset 0 0 0 1px rgba(212, 212, 216, 0.14);
+}
+
+.jobHunterPreviewGrid span:nth-child(3) {
+    box-shadow: inset 0 0 0 1px rgba(250, 204, 21, 0.16);
+}
+
+.jobHunterPreviewTerminal {
+    position: absolute;
+    left: clamp(1.4rem, 8%, 2.5rem);
+    right: clamp(1.4rem, 8%, 2.5rem);
+    top: clamp(1.4rem, 9%, 2.4rem);
+    min-height: 9rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.65rem;
+    background: rgba(9, 9, 11, 0.74);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 22px 46px rgba(0, 0, 0, 0.28);
+    overflow: hidden;
+    transform: translateZ(42px);
+}
+
+.jobHunterPreviewRows {
+    display: grid;
+    gap: 0.65rem;
+    padding: 0.35rem 1rem 1rem;
+}
+
+.jobHunterPreviewRows span {
+    display: block;
+    height: 0.62rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.jobHunterPreviewRows span:nth-child(1) {
+    width: 78%;
+}
+
+.jobHunterPreviewRows span:nth-child(2) {
+    width: 56%;
+}
+
+.jobHunterPreviewRows span:nth-child(3) {
+    width: 68%;
+    background: linear-gradient(90deg, rgba(23, 46, 175, 0.66), rgba(253, 31, 216, 0.42));
+}
+
+.jobHunterPreviewBadge {
+    position: absolute;
+    right: 1.7rem;
+    bottom: 7rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 850;
+    padding: 0.5rem 0.75rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
+}
+
+.jobHunterContent {
+    justify-content: center;
+}
+
+.jobHunterFlowPanel {
+    grid-column: 1 / -1;
+    position: relative;
+    display: grid;
+    gap: clamp(1rem, 2.2vw, 1.5rem);
+    margin-top: var(--jh-flow-margin);
+    padding: clamp(1rem, 2vw, 1.35rem);
+    border: 1px solid rgba(24, 24, 27, 0.08);
+    border-radius: 0.65rem;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.64), rgba(255, 255, 255, 0.38)),
+        rgba(249, 249, 250, 0.72);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.34),
+        0 18px 44px rgba(24, 24, 27, 0.06);
+    opacity: var(--jh-flow-opacity);
+    clip-path: inset(0 0 var(--jh-flow-clip) 0);
+    transform: translate3d(0, var(--jh-flow-y), 0);
+    will-change: max-height, opacity, transform, clip-path;
+}
+
+.jobHunterProject.isFlowReady .jobHunterFlowPanel {
+    max-height: var(--jh-flow-height);
+    overflow: hidden;
+}
+
+.jobHunterFlowIntro {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid rgba(24, 24, 27, 0.08);
+}
+
+.jobHunterFlowIntro span {
+    color: #111111;
+    font-size: 0.78rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.jobHunterFlowIntro p {
+    max-width: 36rem;
+    color: #52525b;
+    font-size: 0.9rem;
+    font-weight: 650;
+    line-height: 1.65;
+}
+
+.jobHunterFlowTrack {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    min-height: 11.4rem;
-    padding: clamp(0.75rem, 1.4vw, 1rem) 0 0;
-    gap: clamp(0.85rem, 3vw, 2.2rem);
-    pointer-events: none;
+    gap: clamp(0.75rem, 2.5vw, 1.85rem);
+    min-height: 11.6rem;
+    padding-top: 0.2rem;
     transform: translateZ(0);
 }
 
 .jobFlowArrow {
     position: relative;
-    flex: 0 0 clamp(2.2rem, 5vw, 4rem);
+    flex: 0 0 clamp(2rem, 4.8vw, 4rem);
     height: 1.25rem;
     color: rgba(24, 24, 27, 0.42);
-    opacity: 0;
+    opacity: 1;
     will-change: transform, opacity;
-    transform: translateZ(0);
 }
 
 .jobFlowArrow span {
@@ -64,7 +256,7 @@
     right: 0;
     height: 1px;
     background: currentColor;
-    transform: translateY(-50%) scaleX(0);
+    transform: translateY(-50%) scaleX(1);
     transform-origin: 0% 50%;
     will-change: transform;
 }
@@ -81,38 +273,60 @@
     transform: translateY(-50%) rotate(45deg);
 }
 
+.jobFlowArrow.first {
+    opacity: var(--jh-arrow-one-opacity);
+}
+
+.jobFlowArrow.second {
+    opacity: var(--jh-arrow-two-opacity);
+}
+
+.jobFlowArrow.first span {
+    transform: translateY(-50%) scaleX(var(--jh-arrow-one-scale));
+}
+
+.jobFlowArrow.second span {
+    transform: translateY(-50%) scaleX(var(--jh-arrow-two-scale));
+}
+
 .jobLayerCard {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: min(12.2rem, 23vw);
-    min-height: 10.4rem;
+    width: min(12.4rem, 23vw);
+    min-height: 10.5rem;
     padding: clamp(0.9rem, 1.6vw, 1.1rem);
     border: 1px solid currentColor;
-    border-radius: 0.85rem;
+    border-radius: 0.75rem;
     color: var(--layer-color);
     background: var(--layer-bg);
     box-shadow:
         inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-        0 20px 44px rgba(24, 24, 27, 0.08);
+        0 18px 40px rgba(24, 24, 27, 0.08);
     will-change: transform, opacity;
     transform: translateZ(0);
 }
 
 .jobLayerCard.bronze {
-    --layer-color: rgba(178, 88, 45, 0.86);
-    --layer-bg: linear-gradient(135deg, rgba(178, 88, 45, 0.12), rgba(178, 88, 45, 0.04));
+    --layer-color: rgba(178, 88, 45, 0.9);
+    --layer-bg: linear-gradient(135deg, rgba(178, 88, 45, 0.13), rgba(178, 88, 45, 0.04));
+    opacity: var(--jh-card-one-opacity);
+    transform: translate3d(0, var(--jh-card-one-y), 0) scale(var(--jh-card-one-scale));
 }
 
 .jobLayerCard.silver {
-    --layer-color: rgba(113, 113, 122, 0.86);
-    --layer-bg: linear-gradient(135deg, rgba(113, 113, 122, 0.12), rgba(113, 113, 122, 0.04));
+    --layer-color: rgba(113, 113, 122, 0.9);
+    --layer-bg: linear-gradient(135deg, rgba(113, 113, 122, 0.13), rgba(113, 113, 122, 0.04));
+    opacity: var(--jh-card-two-opacity);
+    transform: translate3d(0, var(--jh-card-two-y), 0) scale(var(--jh-card-two-scale));
 }
 
 .jobLayerCard.gold {
-    --layer-color: rgba(180, 124, 20, 0.92);
-    --layer-bg: linear-gradient(135deg, rgba(180, 124, 20, 0.14), rgba(180, 124, 20, 0.04));
+    --layer-color: rgba(180, 124, 20, 0.94);
+    --layer-bg: linear-gradient(135deg, rgba(180, 124, 20, 0.16), rgba(180, 124, 20, 0.04));
+    opacity: var(--jh-card-three-opacity);
+    transform: translate3d(0, var(--jh-card-three-y), 0) scale(var(--jh-card-three-scale));
 }
 
 .jobLayerIcon {
@@ -121,7 +335,7 @@
     width: 2.45rem;
     height: 2.45rem;
     border-radius: 0.62rem;
-    background: rgba(255, 255, 255, 0.46);
+    background: rgba(255, 255, 255, 0.48);
     box-shadow: inset 0 0 0 1px rgba(24, 24, 27, 0.06);
 }
 
@@ -135,10 +349,10 @@
     stroke-linejoin: round;
 }
 
-.jobLayerCard h3 {
+.jobLayerCard h4 {
     margin-top: 0.78rem;
     color: #111111;
-    font-size: clamp(1rem, 1.55vw, 1.18rem);
+    font-size: clamp(0.98rem, 1.45vw, 1.14rem);
     font-weight: 850;
     line-height: 1.1;
 }
@@ -151,258 +365,74 @@
     line-height: 1.55;
 }
 
-.jobHunterContent {
-    position: relative;
-    z-index: 2;
-    width: min(61rem, calc(100% - 2.5rem));
-    transform: translateZ(0);
-}
-
-.jobHunterSummary {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: clamp(1.25rem, 2.6vw, 1.85rem);
-    border: 1px solid rgba(24, 24, 27, 0.08);
-    border-radius: 0.5rem;
-    background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.58)),
-        rgba(249, 249, 250, 0.78);
-    box-shadow: 0 24px 56px rgba(24, 24, 27, 0.07);
-    transform: translateZ(0);
-}
-
-.jobHunterSubtitle {
-    max-width: 34rem;
-    color: #111111;
-    font-size: clamp(1.15rem, 2vw, 1.45rem);
-    font-weight: 850;
-    line-height: 1.35;
-}
-
-.jobHunterDescription {
-    margin-top: 1rem;
-    max-width: 38rem;
-    color: #52525b;
-    font-size: 1rem;
-    line-height: 1.75;
-}
-
-.jobHunterChainPanel {
-    position: absolute;
-    top: calc(100% + 0.85rem);
-    left: 0;
-    right: 0;
-    z-index: 1;
-    padding: clamp(1rem, 2vw, 1.35rem);
-    border: 1px solid rgba(24, 24, 27, 0.08);
-    border-radius: 0.5rem;
-    background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.52)),
-        rgba(249, 249, 250, 0.78);
-    box-shadow: 0 24px 54px rgba(24, 24, 27, 0.06);
-    overflow: visible;
-    will-change: clip-path, opacity, transform;
-    contain: paint;
-    transform: translateZ(0);
-}
-
-.jobHunterChainIntro {
+.jobHunterDelivery {
+    justify-self: end;
     display: grid;
     gap: 0.35rem;
-    width: 100%;
-    padding: 0 0 0.85rem;
-    border-bottom: 1px solid rgba(24, 24, 27, 0.08);
+    width: min(20rem, 100%);
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(23, 46, 175, 0.26);
+    border-radius: 0.6rem;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.74)),
+        linear-gradient(135deg, rgba(23, 46, 175, 0.12), rgba(253, 31, 216, 0.1));
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.56),
+        0 18px 34px rgba(24, 24, 27, 0.08);
+    opacity: 1;
+    transform: translate3d(0, var(--jh-delivery-y), 0);
+    will-change: transform;
 }
 
-.jobHunterChainIntro span {
-    color: #111111;
-    font-size: 0.78rem;
+.jobHunterProject:hover .jobHunterDelivery {
+    opacity: 1;
+    filter: none;
+}
+
+.jobHunterDelivery span {
+    color: #1024a4;
+    font-size: 0.74rem;
     font-weight: 850;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
-.jobHunterChainIntro p {
-    max-width: 42rem;
-    color: #52525b;
-    font-size: 0.92rem;
-    font-weight: 650;
-    line-height: 1.65;
-}
-
-.jobHunterTags {
-    margin-top: 0;
-    color: #3f3f46;
-    font-size: 0.86rem;
-    font-weight: 800;
-    line-height: 1.6;
-}
-
-.jobHunterFooter {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    width: 100%;
-    margin-top: 1.1rem;
-    padding-top: 0.95rem;
-    border-top: 1px solid rgba(24, 24, 27, 0.08);
-}
-
-.jobHunterActions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 0.85rem;
-}
-
-.jobHunterStatus {
-    display: inline-flex;
-    margin-top: 0;
-    border: 1px solid rgba(23, 46, 175, 0.22);
-    border-radius: 999px;
-    background: linear-gradient(135deg, rgba(23, 46, 175, 0.08), rgba(253, 31, 216, 0.08));
-    color: #27272a;
-    font-size: 0.78rem;
-    font-weight: 850;
-    padding: 0.42rem 0.75rem;
-}
-
-.jobHunterLink {
-    display: inline-flex;
-    margin-top: 0;
-    border-bottom: 1px solid currentColor;
+.jobHunterDelivery strong {
     color: #111111;
+    font-size: 0.9rem;
     font-weight: 850;
-    text-decoration: none;
-    transition:
-        color 0.18s ease,
-        transform 0.18s ease;
+    line-height: 1.45;
 }
 
-.jobHunterLink:hover {
-    color: #172eaf;
-    transform: translateY(-2px);
+html.dark-theme .jobHunterProject::before {
+    background:
+        radial-gradient(ellipse 34rem 22rem at 12% 18%, rgba(111, 130, 255, 0.14), transparent 68%),
+        radial-gradient(ellipse 38rem 24rem at 88% 84%, rgba(255, 101, 231, 0.12), transparent 68%);
 }
 
-@media (min-width: 769px) {
-    .jobHunterChainPanel {
-        opacity: 0;
-        visibility: hidden;
-        clip-path: inset(0 0 100% 0);
-        pointer-events: none;
-        transform: translateY(-1rem) scale(0.98) translateZ(0);
-    }
-
-    .jobLayerCard {
-        opacity: 0;
-    }
-}
-
-@media (max-width: 768px) {
-    .jobHunterSection {
-        height: auto;
-        min-height: auto;
-        padding: 1rem;
-        overflow: visible;
-        background: transparent;
-    }
-
-    .jobHunterStage {
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
-        min-height: auto;
-        margin-top: 1rem;
-        padding-top: 0;
-    }
-
-    .jobLayerCard {
-        width: 100%;
-        min-height: auto;
-        opacity: 1;
-        transform: none;
-    }
-
-    .jobFlowArrow {
-        display: none;
-    }
-
-    .jobHunterContent {
-        width: 100%;
-    }
-
-    .jobHunterSummary {
-        padding: 1.2rem;
-    }
-
-    .jobHunterChainPanel {
-        position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        margin-top: 1rem;
-        padding: 1rem;
-        opacity: 1;
-        visibility: visible;
-        clip-path: none;
-        transform: none;
-    }
-
-    .jobHunterFooter {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .jobHunterActions {
-        justify-content: flex-start;
-    }
-}
-
-html.dark-theme .jobHunterSection {
-    background: transparent;
-    box-shadow: none;
-}
-
-html.dark-theme .jobHunterSummary,
-html.dark-theme .jobHunterChainPanel {
+html.dark-theme .jobHunterFlowPanel {
     border-color: rgba(244, 244, 245, 0.08);
     background:
-        linear-gradient(135deg, rgba(24, 24, 27, 0.82), rgba(24, 24, 27, 0.56)),
-        rgba(9, 9, 11, 0.74);
-    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.22);
+        linear-gradient(135deg, rgba(39, 39, 42, 0.72), rgba(24, 24, 27, 0.46)),
+        rgba(9, 9, 11, 0.68);
+    box-shadow:
+        inset 0 0 0 1px rgba(244, 244, 245, 0.04),
+        0 18px 44px rgba(0, 0, 0, 0.2);
 }
 
-html.dark-theme .jobLayerCard h3,
-html.dark-theme .jobHunterSubtitle,
-html.dark-theme .jobHunterLink,
-html.dark-theme .jobHunterChainIntro span {
+html.dark-theme .jobHunterFlowIntro {
+    border-color: rgba(244, 244, 245, 0.08);
+}
+
+html.dark-theme .jobHunterFlowIntro span,
+html.dark-theme .jobLayerCard h4,
+html.dark-theme .jobHunterDelivery strong {
     color: #f4f4f5;
 }
 
-html.dark-theme .jobLayerCard p,
-html.dark-theme .jobHunterDescription,
-html.dark-theme .jobHunterTags,
-html.dark-theme .jobHunterChainIntro p {
+html.dark-theme .jobHunterFlowIntro p,
+html.dark-theme .jobLayerCard p {
     color: #a1a1aa;
-}
-
-html.dark-theme .jobHunterChainIntro {
-    border-color: rgba(244, 244, 245, 0.08);
-}
-
-html.dark-theme .jobHunterFooter {
-    border-color: rgba(244, 244, 245, 0.08);
-}
-
-html.dark-theme .jobHunterStatus {
-    border-color: rgba(143, 160, 255, 0.28);
-    background: linear-gradient(135deg, rgba(111, 130, 255, 0.14), rgba(255, 101, 231, 0.1));
-    color: #f4f4f5;
 }
 
 html.dark-theme .jobLayerIcon {
@@ -412,4 +442,107 @@ html.dark-theme .jobLayerIcon {
 
 html.dark-theme .jobFlowArrow {
     color: rgba(244, 244, 245, 0.42);
+}
+
+html.dark-theme .jobLayerCard.bronze {
+    --layer-color: rgba(245, 158, 125, 0.94);
+    --layer-bg: linear-gradient(135deg, rgba(127, 29, 29, 0.24), rgba(127, 29, 29, 0.08));
+}
+
+html.dark-theme .jobLayerCard.silver {
+    --layer-color: rgba(212, 212, 216, 0.94);
+    --layer-bg: linear-gradient(135deg, rgba(113, 113, 122, 0.22), rgba(113, 113, 122, 0.08));
+}
+
+html.dark-theme .jobLayerCard.gold {
+    --layer-color: rgba(250, 204, 21, 0.94);
+    --layer-bg: linear-gradient(135deg, rgba(113, 63, 18, 0.28), rgba(113, 63, 18, 0.08));
+}
+
+html.dark-theme .jobHunterDelivery {
+    border-color: rgba(143, 160, 255, 0.38);
+    background:
+        linear-gradient(135deg, rgba(39, 39, 42, 0.94), rgba(24, 24, 27, 0.84)),
+        linear-gradient(135deg, rgba(111, 130, 255, 0.2), rgba(255, 101, 231, 0.14));
+    box-shadow:
+        inset 0 0 0 1px rgba(244, 244, 245, 0.08),
+        0 18px 34px rgba(0, 0, 0, 0.24);
+}
+
+html.dark-theme .jobHunterDelivery span {
+    color: #9fb0ff;
+}
+
+@media (max-width: 860px) {
+    .jobHunterPreview {
+        min-height: 16rem;
+    }
+
+    .jobHunterFlowIntro {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .jobHunterFlowTrack {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: auto;
+    }
+
+    .jobLayerCard {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .jobFlowArrow {
+        display: none;
+    }
+
+    .jobHunterDelivery {
+        justify-self: stretch;
+    }
+}
+
+@media (max-width: 768px) {
+    .jobHunterScrollScene {
+        min-height: auto;
+    }
+
+    .jobHunterScrollScene.isFlowReady .jobHunterProject {
+        position: relative;
+        top: auto;
+    }
+
+    .jobHunterProject {
+        --jh-flow-height: none;
+        --jh-flow-margin: 1rem;
+        --jh-flow-opacity: 1;
+        --jh-flow-y: 0px;
+        --jh-flow-clip: 0%;
+        --jh-card-one-opacity: 1;
+        --jh-card-one-y: 0px;
+        --jh-card-one-scale: 1;
+        --jh-card-two-opacity: 1;
+        --jh-card-two-y: 0px;
+        --jh-card-two-scale: 1;
+        --jh-card-three-opacity: 1;
+        --jh-card-three-y: 0px;
+        --jh-card-three-scale: 1;
+        --jh-arrow-one-opacity: 1;
+        --jh-arrow-one-scale: 1;
+        --jh-arrow-two-opacity: 1;
+        --jh-arrow-two-scale: 1;
+        --jh-delivery-opacity: 1;
+        --jh-delivery-y: 0px;
+    }
+
+    .jobHunterProject.isFlowReady .jobHunterFlowPanel {
+        max-height: none;
+        overflow: visible;
+    }
+
+    .jobHunterFlowPanel {
+        clip-path: none;
+        transform: none;
+    }
 }

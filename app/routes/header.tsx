@@ -252,7 +252,14 @@ export function Header({ language, onLanguageChange }: HeaderProps) {
         <>
         <header ref={headerRef} className={`headerContainer ${isDocked ? "isDocked" : "isBottom"}`}>
             <button className="logo" onClick={() => scrollToSection("home")} aria-label="Scroll to home">
-                <div className="logoImg"></div>
+                <img
+                    className="logoImg"
+                    src="/images/gustavo-header-icon.png"
+                    alt=""
+                    aria-hidden="true"
+                    width="48"
+                    height="48"
+                />
                 <span className="logoText">Gustavo</span>
             </button>
             <nav className="headerRoutes" aria-label="Primary navigation">
@@ -302,9 +309,16 @@ export function Header({ language, onLanguageChange }: HeaderProps) {
                     ))}
                 </div>
 
-                <button className="cvDownload">
-                    {language === "en" ? "Download CV" : "Baixar CV"}
-                </button>
+                <a
+                    className="cvDownload"
+                    href="/files/00%20Curriculo%20-%20Gustavo%20Henrique.pdf"
+                    download
+                >
+                    <span className="cvDownloadFull">
+                        {language === "en" ? "Download CV" : "Baixar CV"}
+                    </span>
+                    <span className="cvDownloadShort">CV</span>
+                </a>
             </div>
         </header>
         {themeTransition && typeof document !== "undefined"

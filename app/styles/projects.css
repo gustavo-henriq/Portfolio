@@ -465,6 +465,213 @@
     min-height: 22rem;
 }
 
+.lumiereProject {
+    grid-template-columns: minmax(18rem, 1fr) minmax(18rem, 0.88fr);
+    position: relative;
+    min-height: clamp(26rem, 42vw, 32rem);
+    padding: clamp(0.36rem, 0.8vw, 0.55rem);
+    background:
+        radial-gradient(ellipse 38rem 21rem at 8% 12%, rgba(127, 29, 29, 0.06), transparent 66%),
+        radial-gradient(ellipse 28rem 18rem at 92% 86%, rgba(253, 31, 216, 0.04), transparent 72%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(249, 249, 250, 0.78)),
+        #ffffff;
+    border-color: rgba(24, 24, 27, 0.09);
+    box-shadow: 0 18px 46px rgba(24, 24, 27, 0.07);
+}
+
+.lumiereProject::before {
+    position: absolute;
+    content: "";
+    inset: 0.36rem;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: 0.48rem;
+    background:
+        linear-gradient(90deg, rgba(10, 10, 12, 0.04) 0%, rgba(10, 10, 12, 0.14) 42%, rgba(10, 10, 12, 0.72) 100%),
+        linear-gradient(180deg, rgba(10, 10, 12, 0.18), transparent 36%, rgba(10, 10, 12, 0.64));
+}
+
+.lumiereProject::after {
+    position: absolute;
+    content: "";
+    inset: auto 0.36rem 0.36rem;
+    z-index: 2;
+    height: 42%;
+    pointer-events: none;
+    border-radius: 0 0 0.48rem 0.48rem;
+    background: linear-gradient(180deg, transparent, rgba(10, 10, 12, 0.78));
+}
+
+.lumiereProject:hover {
+    border-color: rgba(24, 24, 27, 0.24);
+    box-shadow: 0 28px 64px rgba(24, 24, 27, 0.14);
+}
+
+.lumiereProject .projectTitle {
+    color: #111111;
+}
+
+.lumiereProject .projectContent {
+    position: relative;
+    z-index: 4;
+    grid-column: 2;
+    align-self: center;
+    padding: clamp(1.4rem, 3vw, 2.2rem);
+    border-radius: 0.55rem;
+    background: linear-gradient(90deg, rgba(10, 10, 12, 0.12), rgba(10, 10, 12, 0.28));
+    backdrop-filter: blur(2px);
+}
+
+.lumiereTitleLogo {
+    display: block;
+    width: clamp(7.2rem, 14vw, 10rem);
+    height: auto;
+    margin-bottom: 0.5rem;
+    filter:
+        drop-shadow(0 12px 24px rgba(0, 0, 0, 0.52))
+        drop-shadow(0 0 12px rgba(255, 0, 88, 0.18));
+}
+
+.lumiereProject .projectProof {
+    color: #ffffff;
+    text-shadow: 0 10px 24px rgba(0, 0, 0, 0.44);
+}
+
+.lumiereProject .projectDescription {
+    color: rgba(244, 244, 245, 0.82);
+    text-shadow: 0 8px 22px rgba(0, 0, 0, 0.42);
+}
+
+.lumiereProject .projectMeta p {
+    color: rgba(244, 244, 245, 0.72);
+}
+
+.lumiereProject .projectActions a {
+    color: #ffffff;
+    text-shadow: 0 8px 20px rgba(0, 0, 0, 0.44);
+}
+
+.lumiereProject .projectActions a:hover {
+    color: #ff5c8f;
+}
+
+.lumierePreview {
+    position: absolute;
+    inset: clamp(0.32rem, 0.8vw, 0.52rem);
+    z-index: 1;
+    display: block;
+    min-height: 0;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgba(24, 24, 27, 0.12);
+    border-radius: 0.5rem;
+    background:
+        radial-gradient(ellipse 26rem 16rem at 50% 34%, rgba(127, 29, 29, 0.24), transparent 70%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 46%),
+        #1f1f1f;
+    perspective: 900px;
+}
+
+.lumierePreview::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(31, 31, 31, 0.24) 0%, rgba(31, 31, 31, 0.1) 38%, rgba(31, 31, 31, 0.76) 100%),
+        linear-gradient(180deg, rgba(31, 31, 31, 0.34) 0%, transparent 38%, rgba(31, 31, 31, 0.68) 100%);
+}
+
+.lumierePreview::after {
+    z-index: 3;
+    width: 14rem;
+    height: 14rem;
+    right: -5rem;
+    bottom: -5rem;
+    background: rgba(255, 0, 72, 0.12);
+    filter: blur(18px);
+}
+
+.lumiereBlurBackdrop,
+.lumiereSceneImage {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+}
+
+.lumiereBlurBackdrop {
+    inset: -14%;
+    z-index: 0;
+    width: 128%;
+    height: 128%;
+    object-fit: cover;
+    object-position: calc(54% - 10px) 50%;
+    filter: blur(20px) saturate(1.08) brightness(0.55);
+    opacity: 0.84;
+    transform: scale(1.08);
+}
+
+.lumiereSceneImage {
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: auto;
+    height: 108%;
+    min-width: 104%;
+    max-width: none;
+    object-fit: cover;
+    object-position: calc(50% - 10px) 50%;
+    transform: translate3d(calc(-50% - 10px), -50%, 42px) scale(1.01);
+    transform-origin: 50% 50%;
+    filter:
+        saturate(0.96)
+        contrast(1.05)
+        brightness(0.76)
+        blur(0.15px)
+        drop-shadow(0 24px 30px rgba(0, 0, 0, 0.34));
+    transition:
+        transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.32s ease;
+    will-change: transform;
+}
+
+.lumiereProject:hover .lumiereSceneImage {
+    transform: translate3d(calc(-50% - 10px), -50.8%, 70px) scale(1.035);
+    filter:
+        saturate(1)
+        contrast(1.06)
+        brightness(0.82)
+        blur(0.1px)
+        drop-shadow(0 32px 34px rgba(0, 0, 0, 0.4));
+}
+
+html.dark-theme .lumiereProject {
+    background:
+        radial-gradient(ellipse 40rem 22rem at 10% 12%, rgba(127, 29, 29, 0.18), transparent 66%),
+        radial-gradient(ellipse 28rem 18rem at 92% 86%, rgba(253, 31, 216, 0.08), transparent 72%),
+        linear-gradient(135deg, rgba(39, 39, 42, 0.96), rgba(24, 24, 27, 0.96)),
+        #1f1f1f;
+    border-color: rgba(244, 244, 245, 0.1);
+    box-shadow: 0 24px 58px rgba(0, 0, 0, 0.2);
+}
+
+html.dark-theme .lumiereProject:hover {
+    border-color: rgba(244, 244, 245, 0.22);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28);
+}
+
+html.dark-theme .lumiereProject .projectTitle,
+html.dark-theme .lumiereProject .projectProof,
+html.dark-theme .lumiereProject .projectActions a {
+    color: #f4f4f5;
+}
+
+html.dark-theme .lumiereProject .projectDescription,
+html.dark-theme .lumiereProject .projectMeta p {
+    color: #c7c7d1;
+}
+
 @keyframes pipelineStageIn {
     to {
         opacity: 1;
@@ -513,6 +720,24 @@
     .pipelineBrowser {
         align-self: stretch;
         width: 100%;
+    }
+
+    .lumiereProject {
+        min-height: 34rem;
+        padding: 0.42rem;
+    }
+
+    .lumiereProject .projectContent {
+        grid-column: 1;
+        align-self: end;
+        margin-top: 11rem;
+        padding: 1.15rem;
+    }
+
+    .lumiereSceneImage {
+        height: 104%;
+        min-width: 160%;
+        object-position: 42% 50%;
     }
 }
 

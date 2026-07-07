@@ -6,6 +6,12 @@ export function AboutMe({ language }: { language: Language }) {
     return (
         <Reveal id="about" className="aboutmeContainer">
             <div className="aboutmeImage">
+                <img
+                    src="/images/gustavo-about-device.png"
+                    alt={language === "en" ? "3D avatar of Gustavo holding a small device" : "Avatar 3D de Gustavo segurando um pequeno dispositivo"}
+                    width="1024"
+                    height="1536"
+                />
             </div>
             <div className="aboutmeContent">
                 <h2 className="aboutmeHeadliner">

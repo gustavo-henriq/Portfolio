@@ -14,14 +14,10 @@ export function Hero({ language }: { language: Language }) {
         <Reveal id="home" className="heroContainer">
             <div className="heroText">
                 <h1 className="heroHeadline">
-                    {language === "en" ? "Hello, I'm " : "Olá, eu sou "}<span className="bold">Gustavo</span>
+                    {language === "en" ? "Hello, I'm " : "Olá, eu sou "}
+                    <span className="bold">Gustavo</span>
+                    {language === "en" ? ", a developer in Brazil" : ", desenvolvedor no Brasil"}
                 </h1>
-                <p className="heroSubline">
-                    <span className="bold">{language === "en" ? "Fullstack Developer" : "Desenvolvedor Fullstack"}</span>
-                </p>
-                <p className="heroSubline">
-                    {language === "en" ? "Based in " : "Baseado no "}<span className="bold">{language === "en" ? "Brazil." : "Brasil."}</span>
-                </p>
                 <p className="heroDescription">
                     {language === "en"
                         ? "I build full-stack applications powered by AI — turning complex problems into clean, working software. Based in Brazil, available for remote work worldwide."
