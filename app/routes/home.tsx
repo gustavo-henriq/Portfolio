@@ -10,8 +10,8 @@ import type { Language } from "../types";
 
 export function meta({ }: Route.MetaArgs) {
   return [
-    { title: "Gustavo H. | Portifolio" },
-    { name: "description", content: "Full stack developer portifolio focused on AI and React applications" },
+    { title: "Gustavo H. | Portfolio" },
+    { name: "description", content: "Full stack developer portfolio focused on AI and React applications" },
   ];
 }
 
