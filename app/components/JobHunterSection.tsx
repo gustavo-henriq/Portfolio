@@ -250,8 +250,8 @@ export function JobHunterSection({ language }: { language: Language }) {
                         </span>
                     </div>
                     <div className="projectActions">
-                        <a href="https://github.com/gustavo-henriq/JobHunter" target="_blank" rel="noopener noreferrer">
-                            GitHub →
+                        <a href="https://jobhunter.byguto.com" target="_blank" rel="noopener noreferrer">
+                            Live →
                         </a>
                     </div>
                 </div>
