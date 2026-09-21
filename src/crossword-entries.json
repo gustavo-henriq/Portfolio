@@ -1,0 +1,132 @@
+[
+  {
+    "answer": "PLAYWRIGHT",
+    "category": "Automation",
+    "clues": {
+      "en": "Writes scripts for browsers, not theaters",
+      "pt": "Escreve roteiros para navegadores, não teatros",
+      "es": "Escribe guiones para navegadores, no teatros"
+    },
+    "projectLink": "#jobhunter",
+    "row": 7,
+    "col": 0,
+    "direction": "across"
+  },
+  {
+    "answer": "GCP",
+    "category": "Data & AI",
+    "clues": {
+      "en": "Google’s cloud platform, in three letters",
+      "pt": "Nuvem do Google em três letras",
+      "es": "Nube de Google en tres letras"
+    },
+    "projectLink": "#jobhunter",
+    "row": 5,
+    "col": 0,
+    "direction": "down"
+  },
+  {
+    "answer": "GEMINI",
+    "category": "Data & AI",
+    "clues": {
+      "en": "AI model matching candidates and vacancies",
+      "pt": "Modelo de IA que combina candidatos e vagas",
+      "es": "Modelo de IA que conecta candidatos y vacantes"
+    },
+    "projectLink": "#jobhunter",
+    "row": 5,
+    "col": 0,
+    "direction": "across"
+  },
+  {
+    "answer": "MONGODB",
+    "category": "Data & AI",
+    "clues": {
+      "en": "Document database behind JobHunter",
+      "pt": "Banco de documentos por trás do JobHunter",
+      "es": "Base de documentos detrás de JobHunter"
+    },
+    "projectLink": "#jobhunter",
+    "row": 4,
+    "col": 7,
+    "direction": "down"
+  },
+  {
+    "answer": "TELEGRAM",
+    "category": "Automation",
+    "clues": {
+      "en": "Messenger that delivers the job alerts",
+      "pt": "Mensageiro que entrega alertas de vagas",
+      "es": "Mensajero que entrega las alertas de empleo"
+    },
+    "projectLink": "#jobhunter",
+    "row": 7,
+    "col": 9,
+    "direction": "down"
+  },
+  {
+    "answer": "REACT",
+    "category": "Web",
+    "clues": {
+      "en": "Library this very page is built with",
+      "pt": "Biblioteca usada para construir esta página",
+      "es": "Biblioteca con la que está hecha esta página"
+    },
+    "projectLink": "#portfolio",
+    "row": 13,
+    "col": 7,
+    "direction": "across"
+  },
+  {
+    "answer": "JAVASCRIPT",
+    "category": "Languages",
+    "clues": {
+      "en": "Language that brings this newspaper to life",
+      "pt": "Linguagem que dá vida a este jornal",
+      "es": "Lenguaje que da vida a este periódico"
+    },
+    "projectLink": "#portfolio",
+    "row": 4,
+    "col": 11,
+    "direction": "down"
+  },
+  {
+    "answer": "PYTHON",
+    "category": "Languages",
+    "clues": {
+      "en": "Snake-named language behind most of my automations",
+      "pt": "Linguagem com nome de cobra por trás das minhas automações",
+      "es": "Lenguaje con nombre de serpiente detrás de mis automatizaciones"
+    },
+    "projectLink": "#jobhunter",
+    "row": 0,
+    "col": 4,
+    "direction": "down"
+  },
+  {
+    "answer": "FASTAPI",
+    "category": "Web",
+    "clues": {
+      "en": "Python framework for fast APIs",
+      "pt": "Framework Python para APIs rápidas",
+      "es": "Framework Python para APIs rápidas"
+    },
+    "projectLink": "#lumiere",
+    "row": 2,
+    "col": 1,
+    "direction": "across"
+  },
+  {
+    "answer": "ESP32",
+    "category": "Hardware",
+    "clues": {
+      "en": "Tiny chip that listens to the soil",
+      "pt": "Pequeno chip que escuta o solo",
+      "es": "Pequeño chip que escucha al suelo"
+    },
+    "projectLink": "#skills",
+    "row": 0,
+    "col": 2,
+    "direction": "across"
+  }
+]

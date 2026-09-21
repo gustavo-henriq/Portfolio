@@ -1,0 +1,10 @@
+import {build} from 'vite';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {pathToFileURL} from 'node:url';
+import path from 'node:path';
+await build({configLoader:'runner'});
+await build({configLoader:'runner',ssr:{noExternal:['gsap','@gsap/react']},build:{ssr:'src/prerender.jsx',outDir:'dist/prerender',emptyOutDir:true,rollupOptions:{output:{entryFileNames:'render.mjs'}}}});
+const {render}=await import(pathToFileURL(path.resolve('dist/prerender/render.mjs')).href);
+const file='dist/client/index.html';writeFileSync(file,readFileSync(file,'utf8').replace('<div id="root"></div>',`<div id="root">${render()}</div>`));
+await import('./prepare-sites-build.mjs');
+console.log('Static readable HTML generated: content is available without JavaScript.');
