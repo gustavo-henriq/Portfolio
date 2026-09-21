@@ -1,0 +1,11 @@
+import {useEffect,useRef,useState} from 'react';
+import {gsap,useGSAP,debugMarkers} from './runtime';
+import {animationConfig as config,animationCopy} from './config';
+import {useReducedMotion} from './useReducedMotion';
+const ids=['projects','skills','trajectory','contact'];
+export function ScrollChrome({language,theme,setLanguage,setTheme}){
+ const t=animationCopy[language],reduced=useReducedMotion(),bar=useRef(null),[active,setActive]=useState(-1),[compact,setCompact]=useState(false);
+ useEffect(()=>{let frame=0;const update=()=>{frame=0;const y=window.scrollY;setCompact(y>=config.headerScroll);let index=-1;ids.forEach((id,i)=>{if(document.getElementById(id)?.getBoundingClientRect().top<=window.innerHeight*.35)index=i;});setActive(index);if(bar.current&&!CSS.supports('animation-timeline: scroll()'))bar.current.style.transform=`scaleX(${y/Math.max(1,document.documentElement.scrollHeight-window.innerHeight)})`;};const schedule=()=>{if(!frame)frame=requestAnimationFrame(update);};window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);update();return()=>{cancelAnimationFrame(frame);window.removeEventListener('scroll',schedule);window.removeEventListener('resize',schedule);};},[]);
+ useGSAP(()=>{if(reduced)return;const title=document.querySelector('.publication-title');gsap.to(title,{scale:config.headerScale,transformOrigin:'center',ease:'none',scrollTrigger:{start:0,end:config.headerScroll,scrub:true,markers:debugMarkers()}});}, {dependencies:[reduced],revertOnUpdate:true});
+ return <><div className="reading-progress" ref={bar} aria-hidden="true"/><span className="page-folio" aria-label={`${t.page} ${active+2}`}>{t.page} {active+2}</span><div className={`compact-masthead ${compact?'is-visible':''}`} inert={!compact} aria-hidden={!compact}><a href="#top" className="compact-title">THE PORTFOLIO</a><nav aria-label={t.index}>{ids.map((id,i)=><a key={id} href={`#${id}`} aria-current={i===active?'location':undefined}>{t.sections[i]}</a>)}</nav><div className="compact-controls">{['PT','EN','ES'].map(lang=><button key={lang} onClick={()=>setLanguage(lang)} aria-pressed={language===lang}>{lang}</button>)}<button onClick={()=>setTheme(theme==='light'?'dark':'light')} aria-label={t.theme}>{theme==='light'?'◐':'◑'}</button><span>{t.page} {active+2}</span></div></div></>;
+}

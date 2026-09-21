@@ -1,0 +1,4 @@
+@font-face{font-family:Montserrat;font-style:normal;font-weight:800;font-display:swap;src:url('/assets/montserrat-800.ttf') format('truetype')}
+.capsule rect{stroke-dasharray:none;animation:draw-capsule .45s ease-out}
+@keyframes draw-capsule{from{opacity:0;stroke-dasharray:1000;stroke-dashoffset:1000}to{opacity:.9;stroke-dasharray:1000;stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){.capsule rect{animation:none}}

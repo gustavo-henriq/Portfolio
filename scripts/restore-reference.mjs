@@ -1,0 +1,26 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+const file=new URL('../src/App.jsx',import.meta.url);let s=readFileSync(file,'utf8');
+s=s.replace('import { useMemo, useState } from "react";','import { useMemo, useState } from "react";\nimport { Crossword } from "./Crossword";');
+s=s.replace(/const puzzleWords[\s\S]*?function scrollToId/, 'function scrollToId');
+s=s.replace(/function WordSearch[\s\S]*?function Projects/, 'function Projects');
+s=s.replace('<WordSearch t={t} />','<Crossword language={language} />');
+s=s.replace('"CUSTOM SOFTWARE?"','"SOFTWARE?"').replace('"I CAN BUILD IT FOR YOU."','"I can make it for you!"');
+s=s.replace('SÃO PAULO — Now accepting commissions from nearby and abroad. I build full-stack software, intelligent automations and AI integrations designed around real problems.','In SP, Brazil, but available to the whole world. Experienced in creating full-stack software, whether integrated with Artificial Intelligence or not, and automations.');
+s=s.replace('<div className="lead-furniture"><span>VOL. 01</span><span>SOFTWARE DESK</span><span>SÃO PAULO</span></div>','');
+s=s.replace('<p className="section-kicker">SPECIAL REPORT</p>','');
+s=s.replace('className="project-feature jobhunter-project"','className="project-feature jobhunter-project" id="jobhunter"').replace('className="project-feature lumiere-project"','className="project-feature lumiere-project" id="lumiere"').replace('className="paradox-project"','className="paradox-project" id="portfolio"');
+s=s.replace('/assets/jobhunter-logo-transparent.png','/assets/jobhunter-user-logo.png');
+s=s.replace(/<div className="lumiere-film"[\s\S]*?<\/div>/,'<img className="cinema-photo" src="/assets/cinema-audience.png" alt="A cinema audience wearing 3D glasses" />');
+s=s.replace('WORRY ON WHAT TO WATCH','WORRY ABOUT WHAT TO WATCH').replace('NEVER EVER PICKING A MOVIE WILL BE HARD AGAIN!','PICKING A MOVIE WILL NEVER BE HARD AGAIN!').replace('A mediation architecture reduces the requests made to the AI API in 82%!','A medallion architecture reduces requests to the AI API by 82%!');
+s=s.replace('<div className="lumiere-wordmark">LUMIÈRE ', '<div className="lumiere-wordmark"><img src="/assets/lumiere-logo.png" alt="Lumière" /> ');
+s=s.replace('UM PARADOXO!??','A PARADOX!??').replace('VOCÊ ESTÁ AQUI!','YOU ARE HERE!').replace('Que tal apresentar projetos de software num formato que você não vê todo dia?','How about presenting software projects in a format you don’t see every day?').replace('Este portfólio nasceu de um conceito: a primeira página de um jornal vintage. O objetivo era ser memorável sem perder clareza, para que você encontre rápido quem eu sou, o que faço e como me chamar.','This portfolio began with a concept: the front page of a vintage newspaper. The goal was to be memorable without losing clarity, so someone short on time can quickly understand who I am, what I do and how to reach me.').replace('Tudo foi pensado e construído por mim, do rascunho ao código.','Everything was designed and built by me, from the sketch to the code. The site is built with React and JavaScript, is available in Portuguese, English and Spanish, and has light and dark modes — presented as a weather forecast.');
+s=s.replace('<aside><p>GOT INTERESTED?', '<aside><img className="portfolio-preview" src="/assets/portfolio-front-preview.png" alt="The front page of this portfolio" /><p>GOT INTERESTED?');
+const a=s.indexOf('function WeekendEdition'),b=s.indexOf('function Contact');
+s=s.slice(0,a)+`function WeekendEdition({ t }) { return <section className="weekend-card"><img className="chess-full" src="/assets/chess-collage.png" alt="Illustrated chessboard" /><div className="interests-title"><img src="/assets/chess-pieces.png" alt="Chess king and queen" /><h2>{t.likesDeck}</h2></div><p className="interests-list">music<br />cinema<br />chess<br />writing<br />Billy Idol<br />card games</p></section>; }
+
+function Trajectory({ t }) { const events = [["2024", "Information Systems", "Recife, PE"], ["2025", "Lumière", "My cinema project"], ["2026", "Moved to São Paulo", "São Paulo, SP"], ["2026", "Joined Hughes Telecom", "Network operations"], ["2026", "Artificial Intelligence", "UNIVESP"]]; return <section className="trajectory-section" id="trajectory"><header><h2>{t.trajectoryTitle}</h2></header><div className="trajectory-track"><img src="/assets/recife-stamp.png" alt="Postal marks" className="stamp recife" /><img src="/assets/trajectory-stamp.png" alt="Adventure stamp" className="stamp adventure" />{events.map(([year,title,detail],index)=><article className={'milestone milestone-'+index} key={index}><span className="pin" aria-hidden="true" /><time>{year}</time><h3>{title}</h3><p>{detail}</p></article>)}</div></section>; }
+
+`+s.slice(b);
+s=s.replace('<p className="section-tag">THE LAST PAGE / OPEN LINE</p>','').replace('<p>Have a process wasting time or an idea worth building? Send the details to the desk.</p>','').replace('>BAIXAR CV<','>DOWNLOAD CV<');
+s=s.replace('MESSAGE FILED — I’LL GET BACK TO YOU.','Preview only — your message has not been sent.').replace('MENSAGEM ARQUIVADA — RESPONDEREI EM BREVE.','Prévia — sua mensagem não foi enviada.').replace('MENSAJE ARCHIVADO — RESPONDERÉ PRONTO.','Vista previa — tu mensaje no se ha enviado.');
+writeFileSync(file,s);

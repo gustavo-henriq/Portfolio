@@ -1,0 +1,7 @@
+import {useEffect} from 'react';
+import {ScrollTrigger} from './runtime';
+export function useAnimationRefresh(language,theme){
+ useEffect(()=>{let disposed=false,frame,timer;const id=decodeURIComponent(window.location.hash.slice(1));if(!id)return undefined;const align=()=>{if(disposed)return;ScrollTrigger.refresh();cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>requestAnimationFrame(()=>{if(!disposed)document.getElementById(id)?.scrollIntoView({behavior:'auto',block:'start'});}));};const images=[...document.images].map(img=>img.complete?Promise.resolve():new Promise(resolve=>{img.addEventListener('load',resolve,{once:true});img.addEventListener('error',resolve,{once:true});}));Promise.all([Promise.resolve(document.fonts?.ready),...images]).then(align);window.addEventListener('load',align,{once:true});timer=setTimeout(align,700);return()=>{disposed=true;clearTimeout(timer);cancelAnimationFrame(frame);window.removeEventListener('load',align);};},[]);
+ useEffect(()=>{let disposed=false,frame;const refresh=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{if(!disposed)ScrollTrigger.refresh();});};document.fonts?.ready.then(refresh);const images=[...document.images];images.forEach(img=>{if(!img.complete)img.addEventListener('load',refresh);});refresh();return()=>{disposed=true;cancelAnimationFrame(frame);images.forEach(img=>img.removeEventListener('load',refresh));};},[language,theme]);
+ useEffect(()=>{document.documentElement.lang=language.toLowerCase();},[language]);
+}
