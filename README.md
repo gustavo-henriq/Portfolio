@@ -2,7 +2,7 @@
 
 Gustavo Henrique's interactive portfolio, designed as a clean vintage newspaper. Built with React and JavaScript, with English, Portuguese and Spanish content, light/dark themes, responsive layouts and accessible interactive sections.
 
-## Run locally
+## Run locally 
 
 ```bash
 npm install
