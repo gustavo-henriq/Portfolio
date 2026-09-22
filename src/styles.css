@@ -137,3 +137,29 @@ footer { display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items
   .headline { font-size:1.78rem; }
   .word-search-letter { font-size:10px; }
 }
+
+/* Let translated copy grow without colliding with the next newspaper block. */
+.front-page > *, .project-spread > *, .paradox-project section, .paradox-project aside { min-width:0; }
+.lead-story { height:auto; overflow:visible; }
+.headline, .projects-banner, .project-feature h3, .paradox-project > h3,
+.interests-title h2, .contact-content h2 { overflow-wrap:anywhere; hyphens:auto; text-wrap:balance; }
+.interests-list span { display:block; }
+.site[data-language="PT"] .headline,
+.site[data-language="ES"] .headline { font-size:clamp(1.65rem,2.8vw,3rem); gap:.14em .18em; }
+.site[data-language="PT"] .missing-card h1,
+.site[data-language="ES"] .missing-card h1 { font-size:clamp(1.65rem,2.2vw,2rem); letter-spacing:-.025em; white-space:nowrap; }
+.site[data-language="PT"] .project-feature h3,
+.site[data-language="ES"] .project-feature h3 { font-size:clamp(1.8rem,2.65vw,2.8rem); line-height:1.05; }
+.site[data-language="PT"] .promise,
+.site[data-language="ES"] .promise { max-width:calc(100% - 20px); font-size:clamp(1.1rem,1.55vw,1.45rem); line-height:1.15; }
+.site[data-language="PT"] .hero-service-copy,
+.site[data-language="ES"] .hero-service-copy { line-height:1.45; }
+
+@media(max-width:720px){
+  .site[data-language="PT"] .headline,
+  .site[data-language="ES"] .headline { font-size:clamp(1.8rem,9.2vw,2.7rem); }
+  .site[data-language="PT"] .projects-banner,
+  .site[data-language="ES"] .projects-banner { font-size:clamp(2rem,10vw,2.65rem); }
+  .site[data-language="PT"] .paradox-project > h3,
+  .site[data-language="ES"] .paradox-project > h3 { font-size:clamp(2rem,10vw,2.7rem); }
+}
