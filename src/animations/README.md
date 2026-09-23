@@ -15,7 +15,7 @@ Native document scroll remains in charge. The longer visual stories pin only the
 | G trajectory | Trajectory.jsx | On arrival the route stage pins; scroll forward/back to draw the route, plane, pins and tickets, then release. Mobile uses a shorter vertical stage. |
 | F puzzle | capsules.js, WordSearch.jsx | Default solved; the grid pins on arrival while the ten capsules draw, then releases. PLAY and finding a skill reuse drawCapsule. All skills read left-to-right. |
 | E JobHunter | Funnel.jsx | The compact funnel pins on arrival while 24 slips filter into three, then releases with a localized illustrative notification. |
-| H nesting | Droste.jsx | Static four-level recursive preview. No iframe, zoom, pinning or scroll consumption. |
+| H portfolio preview | App.jsx | Plain static screenshot. No recursive layers, animation, iframe, pinning or scroll consumption. |
 | I FOUND | FoundPoster.jsx | Enter contact: stamp lands on compact poster; text/form and skyline remain readable. |
 
 For **each row**, test 390px and desktop, PT/EN/ES, both themes, and OS/browser reduced motion. Reduced motion removes tweens/pinning and shows complete static states. GSAP contexts and matchMedia revert on changes/unmount. Refresh runs after fonts, images and language/theme changes. Add `?debug=anim` before the hash to see ScrollTrigger markers.
@@ -37,8 +37,6 @@ No 60fps/4x-CPU result is claimed without a real performance recording. No persi
 | stampDuration / stampEase | .25 / back.out(1.5) | FOUND duration / route ticket easing |
 | funnelScrollVh | 80 | Pinned funnel scroll distance |
 | funnelSlips | 24 | Number of animated listings |
-| drosteLevels | 4 | Nested still images |
-| drosteWindow | x56,y52,w38,h38 | Nested screenshot rectangle (%) |
 | desktopMin | 1024 | Pin/desktop route breakpoint |
 | foundStart | center 75% | Contact stamp entry |
 
