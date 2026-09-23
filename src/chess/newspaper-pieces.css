@@ -1,0 +1,30 @@
+/* Flat engraved pieces derived from the supplied silhouettes. Both armies
+   have their own transparent artwork; no CSS inversion or fake depth. */
+.chess-piece {
+  width: 94%;
+  height: 94%;
+  opacity: 1;
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+.site[data-theme='dark'] .chess-piece {
+  opacity: 1;
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+.board-coordinate {
+  position: absolute;
+  z-index: 3;
+  color: color-mix(in srgb, var(--ink) 82%, var(--paper));
+  font: 700 clamp(.48rem, 1.4vw, .62rem) Oswald, sans-serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.rank-coordinate { top: 3px; left: 4px; }
+.file-coordinate { right: 4px; bottom: 3px; text-transform:lowercase; }
+.chess-square.dark .board-coordinate {
+  color: color-mix(in srgb, var(--paper) 86%, var(--ink));
+}

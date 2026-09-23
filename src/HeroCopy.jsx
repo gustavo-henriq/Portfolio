@@ -10,7 +10,7 @@ const heroCopy = {
       ["SOFTWARE.", "Web apps from the interface to the back end, with JavaScript and React on the front and Python (FastAPI) behind it."],
     ],
     process: "I like to start with the boring question: what is slowing you down? Then I build a small working piece early, so you can see it, test it and tell me what to change.",
-    cta: "FIND MY STACK ↓",
+    cta: "FIND MY STACK",
   },
   PT: {
     intro: "Sou Guto, desenvolvedor em São Paulo, Brasil, trabalhando com equipes e clientes ao redor do mundo. Construo softwares e automações, com ou sem IA, principalmente em Python e JavaScript, e gosto de problemas em que um bom script devolve horas da semana às pessoas.",
@@ -21,7 +21,7 @@ const heroCopy = {
       ["SOFTWARE.", "Aplicações web da interface ao back-end, com JavaScript e React no front-end e Python (FastAPI) por trás."],
     ],
     process: "Gosto de começar pela pergunta mais simples: o que está atrasando você? Depois construo uma pequena parte funcional desde cedo, para você ver, testar e dizer o que precisa mudar.",
-    cta: "ENCONTRE MINHA STACK ↓",
+    cta: "ENCONTRE MINHA STACK",
   },
   ES: {
     intro: "Soy Guto, desarrollador en São Paulo, Brasil, y trabajo con equipos y clientes de todo el mundo. Construyo software y automatizaciones, con o sin IA, principalmente en Python y JavaScript, y me gustan los problemas en los que un buen script devuelve horas de la semana a las personas.",
@@ -32,7 +32,7 @@ const heroCopy = {
       ["SOFTWARE.", "Aplicaciones web desde la interfaz hasta el back-end, con JavaScript y React en el front-end y Python (FastAPI) detrás."],
     ],
     process: "Me gusta empezar con la pregunta sencilla: ¿qué te está haciendo perder tiempo? Luego construyo pronto una pequeña parte funcional para que puedas verla, probarla y decirme qué cambiar.",
-    cta: "DESCUBRE MI STACK ↓",
+    cta: "DESCUBRE MI STACK",
   },
 };
 
