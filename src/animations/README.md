@@ -13,7 +13,7 @@ Native document scroll remains in charge. The longer visual stories pin only the
 | C highlights | Highlight.jsx, animations.css | Key words paint on entry in supporting browsers. CSS fallback is fully painted; text is always readable. Clip-path is used instead of background-size to avoid paint/layout animation. |
 | D numbers | CountUp.jsx | Scroll to 600+ and 82%; fast anchor jumps leave final values. Screen readers get final labels; widths are reserved. |
 | G trajectory | Trajectory.jsx | On arrival the route stage pins; scroll forward/back to draw the route, plane, pins and tickets, then release. Mobile uses a shorter vertical stage. |
-| F puzzle | capsules.js, WordSearch.jsx | Default solved; the grid pins on arrival while the ten capsules draw, then releases. PLAY and finding a skill reuse drawCapsule. All skills read left-to-right. |
+| F puzzle | capsules.js, WordSearch.jsx | Default solved; the capsules draw on arrival. PLAY and finding a skill reuse drawCapsule. All skills read left-to-right. |
 | E JobHunter | Funnel.jsx | The compact funnel pins on arrival while 24 slips filter into three, then releases with a localized illustrative notification. |
 | H portfolio preview | App.jsx | Plain static screenshot. No recursive layers, animation, iframe, pinning or scroll consumption. |
 | I FOUND | FoundPoster.jsx | Enter contact: stamp lands on compact poster; text/form and skyline remain readable. |
