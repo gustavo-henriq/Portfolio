@@ -2,3 +2,21 @@
 /* Keep the board and translated controls inside narrow newspaper columns. */
 @media(max-width:720px){.mini-chess-board{min-width:0}.chess-square{min-height:0}}
 @media(max-width:480px){.chess-column-header{flex-wrap:wrap}.chess-column-header p{flex-basis:100%;text-align:left}.chess-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.chess-controls button{min-width:0;min-height:40px;white-space:normal;overflow-wrap:anywhere;line-height:1.1}.chess-controls button:last-child{grid-column:1/-1}}
+
+/* A legal capture surrounds the piece; empty destinations keep the small dot. */
+.mini-chess-board{position:relative;user-select:none}
+.chess-square.legal:not(.capture)::after{content:'';position:absolute;inset:36%;border:2px solid var(--accent);border-radius:50%;z-index:2;pointer-events:none}
+.chess-square.capture::after{content:'';position:absolute;inset:6%;border:3px solid var(--accent);border-radius:50%;z-index:2;pointer-events:none;box-shadow:0 0 0 1px var(--paper)}
+.chess-square.drag-over.legal{box-shadow:inset 0 0 0 3px var(--accent)}
+.chess-square.drag-source .chess-piece{opacity:.28}
+.chess-drag-piece{position:fixed;z-index:150;width:44px;height:44px;object-fit:contain;transform:translate(-50%,-50%) scale(1.12);pointer-events:none;filter:grayscale(1) contrast(1.2)}
+.site[data-theme='dark'] .chess-drag-piece{filter:invert(1) grayscale(1) contrast(1.1)}
+.chess-win-overlay{position:absolute;inset:0;z-index:5;display:grid;place-items:center;overflow:hidden;background:color-mix(in srgb,var(--paper) 18%,transparent);pointer-events:none}
+.chess-win-overlay strong{z-index:2;padding:.28em .5em;border:2px solid var(--ink);background:var(--paper);color:var(--accent);font:800 clamp(1.45rem,5vw,2.2rem) Oswald,sans-serif;text-transform:uppercase;transform:rotate(-2deg);box-shadow:3px 3px 0 color-mix(in srgb,var(--ink) 22%,transparent)}
+.chess-confetti{position:absolute;inset:0;z-index:1;pointer-events:none}
+.chess-confetti i{position:absolute;bottom:var(--bottom);left:var(--origin);width:var(--w);height:var(--h);background:color-mix(in srgb,var(--ink) 88%,var(--paper));opacity:0;animation:chess-confetti-flight var(--duration) cubic-bezier(.18,.6,.38,1) var(--delay) both}
+.chess-confetti i:nth-child(3n){background:color-mix(in srgb,var(--ink) 55%,var(--paper));border-radius:1px 0 2px 0}
+.chess-confetti i:nth-child(5n){background:color-mix(in srgb,var(--ink) 30%,var(--paper));width:calc(var(--w) * 1.4);height:3px}
+.chess-confetti i:nth-child(7n){border:1px solid var(--ink);background:var(--paper)}
+@keyframes chess-confetti-flight{0%{opacity:0;transform:translate(0,0) rotate(0) scale(.65)}12%{opacity:.95}55%{opacity:.95;transform:translate(calc(var(--travel-x) * .78),var(--travel-y)) rotate(calc(var(--spin) * .7)) scale(1)}100%{opacity:0;transform:translate(var(--travel-x),calc(var(--travel-y) * .65)) rotate(var(--spin)) scale(.8)}}
+@media(prefers-reduced-motion:reduce){.chess-confetti i{display:none}.chess-win-overlay strong{transform:none}}

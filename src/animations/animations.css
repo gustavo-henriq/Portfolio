@@ -34,3 +34,16 @@ html[data-reduced-motion=true] .reading-progress{animation:none;transform:scaleX
 @media(max-width:480px){
   .contact-section .compact-poster h2{font-size:.68rem;line-height:1.05;overflow-wrap:anywhere}
 }
+
+/* Preserve the original stamp lettering while turning its white paper into alpha. */
+.stamp-filter{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+.route-stage .stamp{filter:url(#stamp-ink);mix-blend-mode:normal}
+.site[data-theme="dark"] .route-stage .stamp{filter:url(#stamp-ink) invert(1);mix-blend-mode:normal}
+
+/* The heading belongs to the pinned paper stage, so it cannot escape the section. */
+.route-heading{position:absolute;top:0;left:50%;z-index:5;max-width:calc(100% - 16px);width:max-content;padding:5px 14px 12px;background:var(--paper);text-align:center;transform:translateX(-50%)}
+@media(max-width:1023px){.route-heading h2{font-size:clamp(1.9rem,8vw,2.4rem);line-height:1}}
+
+.job-flow-visual{width:calc(100% + 56px);max-width:none;margin:16px -28px 18px;align-self:center;overflow:hidden;background:#111}
+.job-flow-visual img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+@media(max-width:720px){.job-flow-visual{width:calc(100% + 32px);margin-inline:-16px}}

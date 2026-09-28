@@ -3,11 +3,16 @@ import assert from 'node:assert/strict';
 import {generateGrid,occurrences} from '../src/generateGrid.js';
 import {stack} from '../src/stack.js';
 const words=stack.map(s=>s.word);
+test('the published stack uses the requested skills',()=>{
+ for(const word of ['CLAUDE','LINUX','CODEX','APIS','ETL','MYSQL'])assert.ok(words.includes(word));
+ for(const word of ['TELEGRAM','GEMINI'])assert.ok(!words.includes(word));
+ assert.equal(words.length,14);
+});
 test('deterministic seeded layout',()=>assert.deepEqual(generateGrid(words),generateGrid(words)));
 test('different seeds change the layout',()=>assert.notDeepEqual(generateGrid(words,{seed:1}).grid,generateGrid(words,{seed:2}).grid));
 test('every skill appears exactly once in all eight directions across 30 seeds',()=>{
  for(let seed=0;seed<30;seed++){
-  const {grid,placements}=generateGrid(words,{seed});assert.equal(grid.length,13);assert.ok(grid.every(r=>r.length===11));assert.equal(placements.length,10);
+  const {grid,placements}=generateGrid(words,{seed});assert.equal(grid.length,14);assert.ok(grid.every(r=>r.length===11));assert.equal(placements.length,words.length);
   for(const word of words)assert.equal(occurrences(grid,word),1,`${seed}: ${word}`);
   for(const p of placements)assert.equal([...p.word].map((_,i)=>grid[p.row+p.dr*i][p.col+p.dc*i]).join(''),p.word);
   assert.ok(placements.every(p=>p.dr===0&&p.dc===1),'All skills read horizontally, left to right');

@@ -181,7 +181,7 @@ footer { display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items
 }
 .lumiere-wordmark img {
   display:block;
-  width:min(64%,310px);
+  width:min(57%,275px);
   height:auto;
   max-height:none;
   box-sizing:content-box;
@@ -197,12 +197,19 @@ footer { display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items
 
 @media(max-width:720px) {
   .lumiere-wordmark { min-height:108px; align-items:flex-start; padding-bottom:16px; }
-  .lumiere-wordmark img { width:min(72%,280px); max-height:none; padding-block:6px 16px; }
+  .lumiere-wordmark img { width:min(64%,245px); max-height:none; padding-block:6px 16px; }
   .whatsapp-float { right:16px; bottom:16px; width:58px; height:58px; }
   .whatsapp-float img { width:38px; height:38px; }
 }
 
 /* Mobile portrait scan: automatic, slow and slightly translucent. */
+
+/* Keep the quotation and its explanation together in the case report. */
+@media(min-width:1051px){
+  .case-story blockquote{margin:auto auto 8px}
+  .case-story>p:last-child{margin:0}
+}
+@media(max-width:720px){.case-story blockquote{margin-bottom:8px}}
 @media (max-width:720px), (hover:none) and (pointer:coarse) {
   .portrait-reveal { cursor:default; }
   .portrait-effect {
@@ -245,7 +252,9 @@ footer { display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items
 .chess-weekend { min-height:790px; padding:24px; background:color-mix(in srgb,var(--paper) 92%,var(--ink) 8%); overflow:hidden; }
 .chess-weekend > h2 { margin:0 0 14px; font-family:Oswald,sans-serif; font-size:clamp(1.65rem,3vw,2rem); line-height:1; text-align:right; }
 .chess-loading { min-height:700px; display:grid; align-content:start; gap:12px; }
-.chess-loading img { width:100%; aspect-ratio:1/1.05; object-fit:cover; filter:grayscale(1) contrast(1.1); mix-blend-mode:multiply; }
+.chess-loading-board { width:min(100%,340px); aspect-ratio:1; margin-inline:auto; display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); border:2px solid var(--ink); }
+.chess-loading-board span.light { background:color-mix(in srgb,var(--paper) 82%,var(--ink) 18%); }
+.chess-loading-board span.dark { background:color-mix(in srgb,var(--ink) 72%,var(--paper) 28%); }
 .chess-loading p { margin:0; font:600 .76rem Oswald,sans-serif; text-transform:uppercase; }
 @media(max-width:720px){
   .chess-weekend { width:100%; min-height:780px; padding:18px 14px; }

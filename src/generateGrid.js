@@ -11,7 +11,7 @@ export function occurrences(grid,word) {
   }
  }return found.size;
 }
-export function generateGrid(words,{cols=11,rows=13,seed=2026,horizontal=true}={}) {
+export function generateGrid(words,{cols=11,rows=14,seed=2026,horizontal=true}={}) {
  if(!Number.isInteger(cols)||!Number.isInteger(rows)||cols<1||rows<1)throw new Error('Invalid grid dimensions');
  words=words.map(w=>w.toUpperCase());
  if(!words.length||new Set(words).size!==words.length||words.some(w=>! /^[A-Z0-9]{2,}$/.test(w)))throw new Error('Use unique words of at least two letters or digits');

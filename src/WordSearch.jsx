@@ -4,7 +4,7 @@ import {generateGrid} from './generateGrid';
 import './word-search.css';
 import './word-search-font.css';
 import {useCapsules} from './animations/capsules';
-const messages={EN:['DISCOVER MY STACK!','PLAY','Reset','Reveal all','Shuffle','FOUND','Skip puzzle','Drag across a word. Keyboard: arrows to move, Space to start and finish.','Congratulations! Now let’s talk','Word search containing my ten technology skills'],PT:['DESCUBRA MINHA STACK!','JOGAR','Reiniciar','Revelar tudo','Embaralhar','ENCONTRADAS','Pular jogo','Arraste sobre uma palavra. Teclado: setas para mover, Espaço para iniciar e terminar.','Parabéns! Vamos conversar','Caça-palavras com minhas dez tecnologias'],ES:['¡DESCUBRE MI STACK!','JUGAR','Reiniciar','Revelar todo','Mezclar','ENCONTRADAS','Saltar juego','Arrastra sobre una palabra. Teclado: flechas para mover, Espacio para iniciar y terminar.','¡Felicidades! Hablemos','Sopa de letras con mis diez tecnologías']};
+const messages={EN:['DISCOVER MY STACK!','PLAY','Reset','Reveal all','Shuffle','FOUND','Skip puzzle','Drag across a word. Keyboard: arrows to move, Space to start and finish.','Congratulations! Now let’s talk','Word search containing my technology skills'],PT:['DESCUBRA MINHA STACK!','JOGAR','Reiniciar','Revelar tudo','Embaralhar','ENCONTRADAS','Pular jogo','Arraste sobre uma palavra. Teclado: setas para mover, Espaço para iniciar e terminar.','Parabéns! Vamos conversar','Caça-palavras com minhas tecnologias'],ES:['¡DESCUBRE MI STACK!','JUGAR','Reiniciar','Revelar todo','Mezclar','ENCONTRADAS','Saltar juego','Arrastra sobre una palabra. Teclado: flechas para mover, Espacio para iniciar y terminar.','¡Felicidades! Hablemos','Sopa de letras con mis tecnologías']};
 function snap(start,end,cols,rows){
  const dx=end.col-start.col,dy=end.row-start.row,angle=Math.round(Math.atan2(dy,dx)/(Math.PI/4))*Math.PI/4;
  const dc=Math.round(Math.cos(angle)),dr=Math.round(Math.sin(angle));let length=Math.round((dx*dc+dy*dr)/(dc*dc+dr*dr));
@@ -12,7 +12,7 @@ function snap(start,end,cols,rows){
  return {...start,dr,dc,endRow:start.row+dr*length,endCol:start.col+dc*length,length:length+1};
 }
 function Capsule({p,invalid=false}){const distance=Math.hypot(p.endCol-p.col,p.endRow-p.row),angle=Math.atan2(p.endRow-p.row,p.endCol-p.col)*180/Math.PI,d=`M0 -.42 H${distance} A.42 .42 0 0 1 ${distance} .42 H0 A.42 .42 0 0 1 0 -.42Z`;return <g data-word={p.word} className={invalid?'capsule rejected':'capsule'} transform={`translate(${p.col+.5} ${p.row+.5}) rotate(${angle})`}><path className="registration" d={d}/><path d={d}/></g>;}
-export function WordSearch({language='EN',cols=11,rows=13}){
+export function WordSearch({language='EN',cols=11,rows=14}){
  const t=messages[language]||messages.EN,board=useRef(null),scope=useRef(null),drag=useRef(null),timer=useRef(null);
  const [seed,setSeed]=useState(2026),[found,setFound]=useState(stack.map(s=>s.word)),[playing,setPlaying]=useState(false),[preview,setPreview]=useState(null),[invalid,setInvalid]=useState(false),[cursor,setCursor]=useState({row:0,col:0}),[start,setStart]=useState(null),[announcement,setAnnouncement]=useState('');
  const {grid,placements}=useMemo(()=>generateGrid(stack.map(s=>s.word),{cols,rows,seed}),[cols,rows,seed]);
