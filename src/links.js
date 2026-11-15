@@ -6,7 +6,7 @@ export const links = {
  jobhunter:'https://jobhunter.byguto.com',
  lumiere:'https://gustavo-henriq.github.io/Lumiere/',
  source:'https://github.com/gustavo-henriq/Portfolio',
- cv:'/files/gustavo-portfolio-cv.pdf',
+ cv:null,
  // TODO: the source portfolio does not declare a LinkedIn profile.
  linkedin:null,
 };
