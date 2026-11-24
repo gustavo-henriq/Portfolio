@@ -4,7 +4,7 @@ export const links = {
  whatsapp:'https://wa.me/5581995154915',
  email:'gustavo.hs369@gmail.com',
  jobhunter:'https://jobhunter.byguto.com',
- lumiere:'https://gustavo-henriq.github.io/Lumiere/',
+ lumiere:'https://lumiere.byguto.com',
  source:'https://github.com/gustavo-henriq/Portfolio',
  cv:null,
  // TODO: the source portfolio does not declare a LinkedIn profile.
